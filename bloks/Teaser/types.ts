@@ -1,4 +1,4 @@
-import { TBlokComponentProps } from "../types";
+import type { TBlokComponentProps } from "@shared/types";
 
 type TTeaser = {
   headline: string;

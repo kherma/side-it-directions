@@ -11,14 +11,6 @@
     "tailwindcss/no-custom-classname": "off",
     "tailwindcss/enforces-shorthand": "error",
     "tailwindcss/no-contradicting-classname": "error",
-    "jsx-a11y/anchor-is-valid": [
-      "error",
-      {
-        "components": ["Link"],
-        "specialLink": ["hrefLeft", "hrefRight"],
-        "aspects": ["invalidHref", "preferButton"]
-      }
-    ],
     "@typescript-eslint/ban-ts-comment": ["off"],
     "@typescript-eslint/ban-ts-ignore": ["off"],
     "@typescript-eslint/ban-types": [

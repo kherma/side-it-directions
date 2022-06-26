@@ -1,5 +1,5 @@
 export type TPath = {
   params: {
-    slug: string[];
+    slug: string;
   };
 };

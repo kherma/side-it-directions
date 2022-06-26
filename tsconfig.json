@@ -14,8 +14,11 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "baseUrl": ".",
     "paths": {
-      "@shared/types": ["./shared/types/index.ts"]
+      "@shared/types": ["shared/types/index.ts"],
+      "@shared/config": ["shared/config/index.ts"],
+      "@shared/utils": ["shared/utils/index.ts"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

@@ -4,43 +4,36 @@ import {
   StoryblokComponent,
 } from "@storyblok/react";
 
-import type { TContainerProps } from "@shared/types";
 import type { NextPage, GetStaticProps } from "next";
 import Head from "next/head";
+
+import type { TContainerProps } from "@shared/types";
+import { homePath } from "@shared/utils";
+
+import { Layout } from "../layout";
 
 const Home: NextPage<TContainerProps> = ({ StoryData }) => {
   const story = useStoryblokState(StoryData);
 
   return (
-    <div>
+    <Layout>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <header>
-        <h1>{story ? story.name : "My Site"}</h1>
-      </header>
-
       <StoryblokComponent blok={story.content} />
-
-      <footer>
-        <p>Page Footer</p>
-      </footer>
-    </div>
+    </Layout>
   );
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const slug = "home";
-
   const sbParams = {
     version: "draft",
   };
 
   const storyblokApi = getStoryblokApi();
   const { data: StoryData } = await storyblokApi.get(
-    `cdn/stories/${slug}`,
+    `cdn/stories/${homePath}`,
     sbParams
   );
 

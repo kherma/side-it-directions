@@ -4,15 +4,19 @@ import {
   StoryblokComponent,
 } from "@storyblok/react";
 
-import type { TContainerProps, TPath } from "@shared/types";
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
+
+import type { TContainerProps } from "@shared/types";
+import { slugPaths } from "@shared/utils";
+
+import { Layout } from "../layout";
 
 const Page: NextPage<TContainerProps> = ({ StoryData }) => {
   const story = useStoryblokState(StoryData);
 
   return (
-    <div>
+    <Layout>
       <Head>
         <title>{story ? story.name : "My Site"}</title>
         <link rel="icon" href="/favicon.ico" />
@@ -23,40 +27,20 @@ const Page: NextPage<TContainerProps> = ({ StoryData }) => {
       </header>
 
       <StoryblokComponent blok={story.content} />
-    </div>
+    </Layout>
   );
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const storyblokApi = getStoryblokApi();
-  const { data } = await storyblokApi.get("cdn/links/");
-
-  const paths: TPath[] = [];
-  Object.keys(data.links).forEach((linkKey) => {
-    if (data.links[linkKey].is_folder || data.links[linkKey].slug === "home") {
-      return;
-    }
-
-    const slug = data.links[linkKey].slug;
-    const splittedSlug = slug.split("/");
-
-    paths.push({ params: { slug: splittedSlug } });
-  });
-
-  return {
-    paths: paths,
-    fallback: false,
-  };
-};
+export const getStaticPaths: GetStaticPaths = async () => ({
+  paths: slugPaths,
+  fallback: false,
+});
 
 export const getStaticProps: GetStaticProps = async ({
   params,
   preview = false,
 }) => {
-  const slug =
-    Array.isArray(params?.slug) && params?.slug
-      ? params.slug.join("/")
-      : "home";
+  const slug = params?.slug ? params.slug : "discover";
 
   const sbParams = {
     version: "published",
