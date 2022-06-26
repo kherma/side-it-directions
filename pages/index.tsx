@@ -2,18 +2,14 @@ import {
   useStoryblokState,
   getStoryblokApi,
   StoryblokComponent,
-  StoryData,
 } from "@storyblok/react";
 
+import type { TContainerProps } from "@shared/types";
 import type { NextPage, GetStaticProps } from "next";
 import Head from "next/head";
 
-type TPageProps = {
-  story: StoryData;
-};
-
-const Home: NextPage<TPageProps> = ({ story }) => {
-  story = useStoryblokState(story);
+const Home: NextPage<TContainerProps> = ({ StoryData }) => {
+  const story = useStoryblokState(StoryData);
 
   return (
     <div>
@@ -43,12 +39,15 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 
   const storyblokApi = getStoryblokApi();
-  const { data } = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
+  const { data: StoryData } = await storyblokApi.get(
+    `cdn/stories/${slug}`,
+    sbParams
+  );
 
   return {
     props: {
-      story: data ? data.story : false,
-      key: data ? data.story.id : false,
+      StoryData: StoryData ? StoryData.story : false,
+      key: StoryData ? StoryData.story.id : false,
     },
   };
 };
