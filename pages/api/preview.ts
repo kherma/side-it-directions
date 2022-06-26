@@ -2,8 +2,9 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 const Preview = (req: NextApiRequest, res: NextApiResponse): void => {
   const { slug = "" } = req.query;
-  // get the storyblok params for the bridge to work
   const params = req?.url?.split("?");
+  const url = params ? `/${slug}?${params[1]}` : `/${slug}`;
+
   // Check the secret and next parameters
   // This secret should only be known to this API route and the CMS
   if (req.query.secret !== process.env.STORYBLOK_PREVIEW_TOKEN) {
@@ -23,7 +24,7 @@ const Preview = (req: NextApiRequest, res: NextApiResponse): void => {
   );
 
   // Redirect to the path from entry
-  res.redirect(`/${slug}?${params![1]}`);
+  res.redirect(url);
 };
 
 export default Preview;
