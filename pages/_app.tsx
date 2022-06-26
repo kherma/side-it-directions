@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import { storyblokInit, apiPlugin } from "@storyblok/react";
+import type { ReactNode } from "react";
 
 import type { AppProps } from "next/app";
 
@@ -11,7 +12,7 @@ storyblokInit({
   components,
 });
 
-const App = ({ Component, pageProps }: AppProps) => {
+const App = ({ Component, pageProps }: AppProps): ReactNode => {
   return <Component {...pageProps} />;
 };
 
