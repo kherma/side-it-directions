@@ -1,12 +1,12 @@
 import type { FC } from "react";
 
 import { NavbarProvider } from "./NavbarProvider";
-import { navbarData } from "./navbarData/navbarData";
+import { navbarDataDesktop } from "./navbarData/navbarData";
 
-export const Navbar: FC = () => {
+export const NavbarDesktop: FC = () => {
   return (
     <nav>
-      {navbarData.map((navbarItem) => (
+      {navbarDataDesktop.map((navbarItem) => (
         <NavbarProvider navbarItem={navbarItem} key={navbarItem.id} />
       ))}
     </nav>
