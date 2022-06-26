@@ -1,8 +1,6 @@
-import { NavbarComponentType } from "../../types";
+import type { TNavbarBlok } from "../navbraRawData";
 
 export type TNavbarLinkRawData = {
-  component: NavbarComponentType;
-  id: string;
   url: string;
   displayName: string;
-};
+} & TNavbarBlok;

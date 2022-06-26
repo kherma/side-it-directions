@@ -4,12 +4,8 @@ import { NavbarDropdown } from "./navbarBloks/NavbarDropdown/NavbarDropdown";
 import { NavbarLink } from "./navbarBloks/NavbarLink/NavbarLink";
 import type { TNavbarDropdownRawData } from "./navbraRawData/bloks/navbarDropdown";
 import type { TNavbarLinkRawData } from "./navbraRawData/bloks/navbarLink";
-import type { TNavbarRawData } from "./navbraRawData/navbraRawData";
+import type { TNavbarProviderProps } from "./types";
 import { NavbarComponentType } from "./types";
-
-type TNavbarProviderProps = {
-  navbarItem: TNavbarRawData;
-};
 
 export const NavbarProvider: FC<TNavbarProviderProps> = ({
   navbarItem,
