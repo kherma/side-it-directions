@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 
 import type { AppProps } from "next/app";
 
-import { components } from "../components/components";
+import { components } from "../bloks/components";
 
 storyblokInit({
   accessToken: process.env["NEXT_PUBLIC_STORYBLOK_PREVIEW_TOKEN"],

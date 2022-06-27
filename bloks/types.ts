@@ -19,7 +19,3 @@ type TypeValuesUnion<T extends object> = {
 }[keyof T];
 
 export type TPageBody = TypeValuesUnion<TBlokComponentPropsMap> & SbBlokData;
-
-export type TBlokComponentProps<T> = {
-  blok: T & SbBlokData;
-};

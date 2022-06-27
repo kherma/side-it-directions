@@ -2,9 +2,15 @@ module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
+    "./bloks/**/*.{js,ts,jsx,tsx}",
+    "./layout/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      maxWidth: {
+        layout: "90rem",
+      },
+    },
   },
   plugins: [],
 };

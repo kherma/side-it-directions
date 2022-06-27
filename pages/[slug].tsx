@@ -4,36 +4,55 @@ import {
   StoryblokComponent,
 } from "@storyblok/react";
 
-import type { NextPage, GetStaticProps } from "next";
+import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 
 import type { TContainerProps } from "@shared/types";
-import { homePath } from "@shared/utils";
+import { slugPaths } from "@shared/utils";
 
 import { Layout } from "../layout";
 
-const Home: NextPage<TContainerProps> = ({ StoryData }) => {
+const Page: NextPage<TContainerProps> = ({ StoryData }) => {
   const story = useStoryblokState(StoryData);
 
   return (
     <Layout>
       <Head>
-        <title>Create Next App</title>
+        <title>{story ? story.name : "My Site"}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <header>
+        <h1>{story ? story.name : "My Site"}</h1>
+      </header>
+
       <StoryblokComponent blok={story.content} />
     </Layout>
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticPaths: GetStaticPaths = async () => ({
+  paths: slugPaths,
+  fallback: false,
+});
+
+export const getStaticProps: GetStaticProps = async ({
+  params,
+  preview = false,
+}) => {
+  const slug = params?.slug ? params.slug : "discover";
+
   const sbParams = {
-    version: "draft",
+    version: "published",
   };
+
+  if (preview) {
+    sbParams.version = "draft";
+  }
 
   const storyblokApi = getStoryblokApi();
   const { data: StoryData } = await storyblokApi.get(
-    `cdn/stories/${homePath}`,
+    `cdn/stories/${slug}`,
     sbParams
   );
 
@@ -45,4 +64,4 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-export default Home;
+export default Page;

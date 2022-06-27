@@ -1,4 +1,4 @@
-import { TBlokComponentProps } from "../types";
+import type { TBlokComponentProps } from "@shared/types";
 
 export type TFeatureProps = {
   name: string;
