@@ -5,7 +5,6 @@ import {
 } from "@storyblok/react";
 
 import type { NextPage, GetStaticProps } from "next";
-import Head from "next/head";
 
 import type { TContainerProps } from "@shared/types";
 import { homePath } from "@shared/utils";
@@ -17,19 +16,19 @@ const Home: NextPage<TContainerProps> = ({ StoryData }) => {
 
   return (
     <Layout>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <StoryblokComponent blok={story.content} />
     </Layout>
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const sbParams = {
-    version: "draft",
+    version: "published",
   };
+
+  if (preview) {
+    sbParams.version = "draft";
+  }
 
   const storyblokApi = getStoryblokApi();
   const { data: StoryData } = await storyblokApi.get(

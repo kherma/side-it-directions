@@ -7,7 +7,7 @@ import { technologiesData } from "./footerData/technologiesData";
 export const FooterTechnologies: FC = () => (
   <div className="my-12">
     <h3 className="text-2xl font-semibold text-center">Techstack:</h3>
-    <ul className="grid grid-cols-2 gap-2 justify-center items-center mt-4 sm:grid-cols-5">
+    <ul className="grid grid-cols-2 gap-2 justify-center items-center mt-4 sm:grid-cols-4 md:grid-cols-5">
       {technologiesData.map(({ id, title, url, Icon }) => (
         <li key={id}>
           <a
@@ -26,10 +26,10 @@ export const FooterTechnologies: FC = () => (
           </a>
         </li>
       ))}
-      <li>
+      <li className="col-span-2 sm:col-span-4 md:col-span-1">
         <a
           href="https://github.com/kherma/side-it-directions"
-          className="flex col-span-2 gap-4 justify-center items-center p-4 text-3xl font-medium bg-neutral-800 rounded sm:flex-col sm:col-span-1 sm:text-base sm:font-normal xl:hover:bg-neutral-700"
+          className="flex gap-4 justify-center items-center p-4 text-3xl font-medium bg-neutral-800 rounded sm:flex-col sm:text-base sm:font-normal xl:hover:bg-neutral-700"
           target="_blank"
           rel="noreferrer"
         >

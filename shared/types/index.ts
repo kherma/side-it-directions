@@ -5,3 +5,4 @@ export * from "./src/linksType";
 export * from "./src/logoVariant";
 
 export * from "./src/sbLink";
+export * from "./src/sbImage";
