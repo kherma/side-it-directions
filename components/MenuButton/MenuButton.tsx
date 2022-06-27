@@ -1,6 +1,6 @@
 import type { FC } from "react";
 
-import { BiMenu } from "react-icons/bi";
+import { HiMenu, HiX } from "react-icons/hi";
 
 import type { TMenuButtonProps } from "./types";
 
@@ -9,6 +9,8 @@ export const MenuButton: FC<TMenuButtonProps> = ({
   setIsNavbarOpen,
 }) => {
   return (
-    <button onClick={() => setIsNavbarOpen(!isNavbarOpen)}>MenuButton</button>
+    <button className="text-3xl" onClick={() => setIsNavbarOpen(!isNavbarOpen)}>
+      {isNavbarOpen ? <HiX /> : <HiMenu />}
+    </button>
   );
 };

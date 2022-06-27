@@ -17,8 +17,9 @@ export const NavbarDropdown: FC<TNavbarDropdownProps> = ({
       className="relative"
       onMouseEnter={() => setIsDropdownOpen(true)}
       onMouseLeave={() => setIsDropdownOpen(false)}
+      onClick={() => setIsDropdownOpen(!isDropdownOpen)}
     >
-      <button className="flex gap-[0.5rem] justify-between items-center px-2 font-semibold capitalize hover:bg-stone-100 rounded cursor-default">
+      <button className="flex gap-[0.5rem] justify-between items-center p-2 font-semibold capitalize hover:bg-stone-200 rounded cursor-default">
         {displayName}
 
         <BiChevronDown
@@ -26,7 +27,7 @@ export const NavbarDropdown: FC<TNavbarDropdownProps> = ({
         />
       </button>
       {isDropdownOpen && (
-        <ul className="flex absolute top-full right-0 z-20 flex-col gap-2 justify-center p-2 min-w-max bg-white rounded border-t shadow-md">
+        <ul className="flex absolute top-full right-0 z-20 flex-col justify-center p-2 min-w-max bg-white rounded border-t shadow-md">
           {links.map((navbarLink) => (
             <NavbarLink key={navbarLink.id} {...navbarLink} />
           ))}

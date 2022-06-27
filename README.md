@@ -14,26 +14,26 @@ This is a roadmap-curriculum for everyone seeking directions to become web devel
 - 🤓 Development - blue
 - 📚 Resources - ???
 
-### PriceLabels
+### PriceType
 
 - Free
 - Trial
 - Paid
 
-### ResourceLabel
+### ResourceType
 
 - Article
 - Book
 - Course
 - Video
 
-### ResourceRelevance
+### RelevanceType
 
 - Main
 - Optional
 - ExtraPoints
 
-### ResourcesType
+### ResourcesCategory
 
 - Courses
 - Books
