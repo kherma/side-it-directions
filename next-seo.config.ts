@@ -1,7 +1,7 @@
 export const SEO = {
-  title: "Discover",
+  title: "Roadmaps",
   titleTemplate: " %s - IT Directions",
-  defaultTitle: "Discover",
+  defaultTitle: "Roadmaps",
   description:
     "This is a roadmap-curriculum for everyone seeking directions to become web developer.",
   openGraph: {
