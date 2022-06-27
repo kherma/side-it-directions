@@ -5,7 +5,6 @@ import {
 } from "@storyblok/react";
 
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
-import Head from "next/head";
 
 import type { TContainerProps } from "@shared/types";
 import { slugPaths } from "@shared/utils";
@@ -14,18 +13,8 @@ import { Layout } from "../layout";
 
 const Page: NextPage<TContainerProps> = ({ StoryData }) => {
   const story = useStoryblokState(StoryData);
-
   return (
     <Layout>
-      <Head>
-        <title>{story ? story.name : "My Site"}</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <header>
-        <h1>{story ? story.name : "My Site"}</h1>
-      </header>
-
       <StoryblokComponent blok={story.content} />
     </Layout>
   );
