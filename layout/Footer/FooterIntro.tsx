@@ -3,6 +3,7 @@ import type { FC } from "react";
 import { LogoVariant } from "@shared/types";
 
 import { Logo } from "../../components/Logo/Logo";
+
 export const FooterIntro: FC = () => (
   <div className="flex flex-col gap-8 justify-center items-center">
     <Logo variant={LogoVariant.White} />
