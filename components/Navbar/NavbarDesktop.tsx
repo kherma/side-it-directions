@@ -5,7 +5,7 @@ import { navbarDataDesktop } from "./navbarData/navbarData";
 
 export const NavbarDesktop: FC = () => {
   return (
-    <nav>
+    <nav className="flex gap-[1rem] justify-center items-center">
       {navbarDataDesktop.map((navbarItem) => (
         <NavbarProvider navbarItem={navbarItem} key={navbarItem.id} />
       ))}

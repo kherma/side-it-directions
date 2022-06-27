@@ -12,5 +12,14 @@ export const NavbarMobileLink: FC<TNavbarMobileLinkProps> = ({
   const onLinkClick = (): void => {
     router.push(url);
   };
-  return <button onClick={onLinkClick}>{displayName}</button>;
+
+  return (
+    <button
+      disabled={router.asPath === url}
+      className="px-[.5rem] pt-[1rem] pb-1 text-xl font-bold text-left disabled:text-neutral-400 uppercase border-b border-b-neutral-500 sm:pt-[1.2rem] sm:text-3xl"
+      onClick={onLinkClick}
+    >
+      {displayName}
+    </button>
+  );
 };

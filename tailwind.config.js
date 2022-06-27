@@ -6,7 +6,11 @@ module.exports = {
     "./layout/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      maxWidth: {
+        layout: "90rem",
+      },
+    },
   },
   plugins: [],
 };
